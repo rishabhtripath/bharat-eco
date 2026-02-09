@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* bharatecovolt Dark Theme */
+    --background: 160 33% 5%;
+    --foreground: 0 0% 100%;
+
+    --card: 160 33% 7%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 160 33% 7%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Cyan/Teal accent - #19f2b6 */
+    --primary: 161 88% 52%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 160 20% 12%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 160 20% 15%;
+    --muted-foreground: 0 0% 100% / 0.7;
+
+    --accent: 161 88% 52%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 100% / 0.15;
+    --input: 0 0% 100% / 0.05;
+    --ring: 161 88% 52%;
+
+    --radius: 0.875rem;
+
+    /* Custom variables */
+    --glass-bg: 160 40% 7% / 0.75;
+    --glass-border: 0 0% 100% / 0.25;
+    --overlay-dark: 160 40% 4% / 0.85;
+    --overlay-darker: 160 40% 4% / 0.9;
+
+    /* Fonts */
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  /* Glass card effect */
+  .glass-card {
+    @apply bg-card/5 border border-white/10 rounded-2xl backdrop-blur-xl;
+  }
+
+  /* Hero gradient overlay */
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--overlay-dark)),
+      hsl(var(--overlay-dark))
+    );
+  }
+
+  .page-overlay {
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--overlay-darker)),
+      hsl(var(--overlay-darker))
+    );
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent;
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+}
