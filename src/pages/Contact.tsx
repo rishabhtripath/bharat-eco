@@ -18,7 +18,6 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate inputs
     if (
       !formData.name.trim() ||
       !formData.email.trim() ||
@@ -39,10 +38,8 @@ const Contact = () => {
           from_email: formData.email,
           message: formData.message,
         },
-        "Publics Key",
+        "Publics Key"
       );
-
-      console.log(result);
 
       if (result.status === 200) {
         toast.success("Message sent successfully!", {
@@ -54,8 +51,6 @@ const Contact = () => {
         throw new Error("Failed to send message");
       }
     } catch (error) {
-      console.error(error);
-
       toast.error("Failed to send message", {
         description: "Please try again or contact us directly via email.",
       });
@@ -67,18 +62,18 @@ const Contact = () => {
   return (
     <Layout
       showFooter
-      className="bg-cover bg-center bg-no-repeat"
+      className="bg-cover bg-center bg-no-repeat relative"
       style={{ backgroundImage: `url(${heroBg})` }}
     >
       {/* Dark overlay */}
-      <div className="absolute inset-0 page-overlay -z-10" />
+      <div className="absolute inset-0 bg-black/40 -z-10" />
 
       {/* Contact Hero */}
       <section className="pt-44 px-6 md:px-20 max-w-3xl animate-fade-in">
-        <h1 className="font-display text-4xl md:text-5xl font-medium mb-4 text-foreground">
+        <h1 className="font-display text-4xl md:text-5xl font-medium mb-4 text-white">
           Contact Us
         </h1>
-        <p className="text-lg text-foreground/85 leading-relaxed">
+        <p className="text-lg text-white/85 leading-relaxed">
           Let's talk about powering the future of electric mobility together.
         </p>
       </section>
@@ -86,36 +81,37 @@ const Contact = () => {
       {/* Contact Content */}
       <section className="mt-20 md:mt-24 px-6 md:px-20 pb-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 max-w-6xl">
+          
           {/* Contact Info */}
-          <div className="animate-fade-in-up">
-            <h2 className="font-display text-2xl text-primary mb-4">
+          <div className="animate-fade-in-up text-white">
+            <h2 className="font-display text-2xl text-sky-400 mb-4">
               Get in Touch
             </h2>
-            <p className="text-foreground/90 leading-relaxed mb-8">
+            <p className="text-white/90 leading-relaxed mb-8">
               Have questions about our EV charging solutions or want to
               collaborate with us? Reach out anytime.
             </p>
 
             <div className="flex flex-col gap-5">
               <div>
-                <span className="block text-sm text-foreground/70 mb-1">
+                <span className="block text-sm text-white/70 mb-1">
                   Email
                 </span>
                 <a
                   href="mailto:bharatecovolt@gmail.com"
-                  className="text-primary hover:underline"
+                  className="text-sky-400 hover:underline"
                 >
                   bharatecovolt@gmail.com
                 </a>
               </div>
 
               <div>
-                <span className="block text-sm text-foreground/70 mb-1">
+                <span className="block text-sm text-white/70 mb-1">
                   Phone
                 </span>
                 <a
                   href="tel:+919652172211"
-                  className="text-primary hover:underline"
+                  className="text-sky-400 hover:underline"
                 >
                   +91 96521 72211
                 </a>
@@ -138,8 +134,9 @@ const Contact = () => {
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
-              className="bg-input border-white/15 rounded-xl py-4 px-4 text-foreground placeholder:text-foreground/60 focus:border-primary"
+              className="bg-sky-100 border-sky-300 rounded-xl py-4 px-4 text-gray-900 placeholder:text-gray-600 focus:border-sky-500 focus:ring-2 focus:ring-sky-300"
             />
+
             <Input
               type="email"
               placeholder="Your Email"
@@ -149,8 +146,9 @@ const Contact = () => {
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
               }
-              className="bg-input border-white/15 rounded-xl py-4 px-4 text-foreground placeholder:text-foreground/60 focus:border-primary"
+              className="bg-sky-100 border-sky-300 rounded-xl py-4 px-4 text-gray-900 placeholder:text-gray-600 focus:border-sky-500 focus:ring-2 focus:ring-sky-300"
             />
+
             <Textarea
               placeholder="Your Message"
               required
@@ -160,12 +158,13 @@ const Contact = () => {
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
               }
-              className="bg-input border-white/15 rounded-xl py-4 px-4 text-foreground placeholder:text-foreground/60 focus:border-primary resize-none"
+              className="bg-sky-100 border-sky-300 rounded-xl py-4 px-4 text-gray-900 placeholder:text-gray-600 focus:border-sky-500 focus:ring-2 focus:ring-sky-300 resize-none"
             />
+
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="mt-2 py-4 rounded-lg bg-primary text-primary-foreground font-medium text-base hover:bg-primary/90 transition-colors"
+              className="mt-2 py-4 rounded-lg bg-sky-500 text-white font-medium text-base hover:bg-sky-600 transition-colors"
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </Button>
